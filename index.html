@@ -126,17 +126,18 @@
 
   <!-- 导航栏 -->
   <nav class="navbar">
-    <!-- id="logo-trigger" 用于绑定双击事件 -->
     <div class="logo" id="logo-trigger">Adremofven</div>
     <div class="nav-links">
+      <!-- 🌟 新增：首页按钮，并默认加上 active 高亮 -->
+      <a href="#home" class="nav-item active">首页</a>
       <a href="#world" class="nav-item">思考</a>
       <a href="#nature" class="nav-item">生命</a>
       <a href="#protect" class="nav-item">立场</a>
     </div>
   </nav>
 
-  <!-- 第一屏：首屏 -->
-  <div class="screen hero">
+  <!-- 第一屏：首屏 🌟 新增：加上 id="home" -->
+  <div id="home" class="screen hero">
     <h1>你好，我是 Adremofven</h1>
     <p>如果你想更了解我</p>
     <a href="#world" class="btn nav-item">请点击这里</a>
@@ -181,7 +182,7 @@
     </div>
   </div>
 
-  <!-- 🌟 隐藏的彩蛋弹窗 -->
+  <!-- 🌟 隐藏的彩蛋弹窗嘿嘿 -->
   <div class="egg-modal" id="egg-modal">
     <div class="egg-content">
       <p>万物皆有灵</p>
@@ -198,8 +199,9 @@
     // 更新导航高亮
     function updateNav(index) {
       navLinks.forEach(link => link.classList.remove('active'));
-      if (index > 0 && index <= navLinks.length) {
-        navLinks[index - 1].classList.add('active');
+      // 🌟 修改：加了首页
+      if (index >= 0 && index < navLinks.length) {
+        navLinks[index].classList.add('active');
       }
     }
 
@@ -262,7 +264,7 @@
       });
     });
 
-    // --- 🌟 彩蛋逻辑 ---
+    // --- 🌟 彩蛋逻辑 惊喜吗---
     const logoTrigger = document.getElementById('logo-trigger');
     const eggModal = document.getElementById('egg-modal');
 
@@ -271,7 +273,7 @@
       eggModal.classList.add('show'); 
     });
 
-    // 点击黑色背景关闭弹窗，拜拜AWA
+    // 点击黑色背景关闭弹窗拜拜
     eggModal.addEventListener('click', (e) => {
       if (e.target === eggModal) { 
         eggModal.classList.remove('show');
